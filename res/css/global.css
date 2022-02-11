@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: rgb(70, 19, 121);
+    --primary-color-transparency: rgba(70, 19, 121, .9);
+    --primary-color-light: rgb(128, 105, 211);
+}
+
+@media (max-width: 1080px) {
+    html {
+        font-size: 93.75%;
+    }
+}
+
+@media (max-width: 720px) {
+    html {
+        font-size: 87.5%;
+    }
+}
+
+.material-icons.md-1 {
+    font-size: 1rem;
+}
+
+.material-icons.md-2 {
+    font-size: 2rem;
+}
+
+.material-icons.md-3 {
+    font-size: 2.5rem;
+}
+
+.material-icons.md-4 {
+    font-size: 4rem;
+}
+
+.material-icons.md-5 {
+    font-size: 6rem;
+}
+
+.nav-area {
+    position: relative;
+    background-color: #461379;
+    height: 60px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+.nav-area a {
+    position: absolute;
+    top: 10px;
+    color: #fff;
+}
+
+.nav-area a:hover {
+    color: #fff;
+}
+
+.nav-area h1 {
+    font-size: 2rem;
+    margin: 0 auto;
+}
+
+.btn-add-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.help-block {
+    display: none;
+}
+
+.section-image-to-thumbify {
+    min-height: calc(100vh - 60px);
+    margin-top: 3rem;
+}
+
+.uploaded-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.area-drag-and-drop {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 10px dashed var(--primary-color-transparency);
+}
+
+.area-drag-and-drop span {
+    color: var(--primary-color-light);
+}
+
+.img-to-thumbify {
+    max-width: 100%;
+    display: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color-transparency) !important;
+}
+
+.area-btn-download {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.area-btn-download .btn-success {
+    width: 300px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.area-btn-download a {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+footer {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-top: 80px;
+}
+
+footer p {
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,17 @@
+{
+    "name": "disoares/cortacorta",
+    "description": "Projeto de c\u0000digo aberto para diversos servi\u0000os \u0000teis",
+    "authors": [{
+        "name": "Diego Soares",
+        "email": "soaressd01@gmail.com"
+    }],
+    "require": {
+        "rain/raintpl": ">=3.0.0",
+        "slim/slim": "3.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    }
+}
