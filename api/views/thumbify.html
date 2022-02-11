@@ -2,14 +2,14 @@
     <div class="area-form-image-to-thumbify col-md-12">
         <form id="form-image-to-thumbify" name="form-image-to-thumbify" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="image-to-thumbify">Choose a image</label>
+                <label for="image-to-thumbify">Selecione uma imagem</label>
                 <div>
                     <button type="button" class="btn btn-primary col-md-12 btn-add-image"
                         onclick="$('#image-to-thumbify').trigger( 'click' )">
                         <span class="material-icons md-2">
                             file_upload
                         </span>&nbsp;
-                        Choose an image
+                        Escolha uma imagem
                     </button>
                     <span class="text-danger help-block"></span>
                 </div>
@@ -24,46 +24,45 @@
                                 file_download
                             </span>
                         </div>
-                        Or drop image here
+                        Ou arraste uma imagem e solte aqui
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="radio-area">
                     <div>
-                        <label for="">I want resize my image to:</label>
+                        <label for="">Eu quero redimensionar a minha imagem para:</label>
                     </div>
                     <div class="form-check form-check-inline" data-toggle="tooltip" data-placement="top"
                         title="Max width: 150px">
                         <input class="form-check-input" type="radio" name="radioSize" id="inlineRadio1" value="150">
-                        <label class="form-check-label" for="inlineRadio1">Very small</label>
+                        <label class="form-check-label" for="inlineRadio1">Muito pequena</label>
                     </div>
                     <div class="form-check form-check-inline" data-toggle="tooltip" data-placement="top"
                         title="Max width: 300px">
                         <input class="form-check-input" type="radio" name="radioSize" id="inlineRadio2" value="300">
-                        <label class="form-check-label" for="inlineRadio2">Small</label>
+                        <label class="form-check-label" for="inlineRadio2">Pequena</label>
                     </div>
                     <div class="form-check form-check-inline" data-toggle="tooltip" data-placement="top"
                         title="Max width: 600px">
                         <input class="form-check-input" type="radio" name="radioSize" id="inlineRadio3" value="600"
                             checked>
-                        <label class="form-check-label" for="inlineRadio3">Medium</label>
+                        <label class="form-check-label" for="inlineRadio3">Média</label>
                     </div>
                     <div class="form-check form-check-inline" data-toggle="tooltip" data-placement="top"
                         title="Max width: 1200px">
                         <input class="form-check-input" type="radio" name="radioSize" id="inlineRadio4" value="1200">
-                        <label class="form-check-label" for="inlineRadio4">Large</label>
+                        <label class="form-check-label" for="inlineRadio4">Grande</label>
                     </div>
                     <div class="form-check form-check-inline" data-toggle="tooltip" data-placement="top"
                         title="Max width: 1920px">
                         <input class="form-check-input" type="radio" name="radioSize" id="inlineRadio5" value="1920">
-                        <label class="form-check-label" for="inlineRadio5">Very Large</label>
+                        <label class="form-check-label" for="inlineRadio5">Muito grande</label>
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary col-md-4 offset-md-4" id="btn-submit" disabled>Resize to
-                    me</button>
+                <button type="submit" class="btn btn-primary col-md-4 offset-md-4" id="btn-submit" disabled>Processar imagem</button>
                 <span class="text-danger help-block"></span>
             </div>
         </form>

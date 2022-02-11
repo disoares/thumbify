@@ -1,2 +1,2 @@
-vendor/
-views-cache/*
+api/vendor/
+api/views-cache/*
