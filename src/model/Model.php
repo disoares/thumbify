@@ -49,6 +49,9 @@ class Model
         switch ($ext) {
             case 'png':
                 $old_image = imagecreatefrompng($image);
+                imagealphablending($new_image, false);
+                imagesavealpha($new_image, true);
+                imagecolortransparent($new_image);
                 break;
             case 'jpeg':
             case 'jpg':
@@ -79,6 +82,25 @@ class Model
 
         $json['filename'] = $new_file_name;
         return json_encode($json);
+    }
+
+    function cropImage($path, $image){
+        $json = array();
+        $json['status'] = 'success';
+
+        $toBeUploaded = $image['tmp_name'];        
+        $info = pathinfo($path);
+        $newFile = $info['filename'] . "_cropped_" . date('s') . ".png";
+
+        if (!move_uploaded_file($toBeUploaded, TEMP_PATH . $newFile)) {
+            $json['status'] = 'error';
+            $json['message'] = 'Oops... Houve um erro.';
+        } else {
+            $json['filename'] = $newFile;
+        }
+
+        return json_encode($json);
+
     }
 
     function deleteFiles()

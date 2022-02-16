@@ -1,3 +1,13 @@
+<style>
+    .cropper-crop{
+        display: none;
+    }
+
+    .cropper-bg{
+        background: none;
+    }
+</style>
+
 <section class="container col-md-6 offset-md-3 section-image-to-thumbify">
     <div class="area-form-image-to-thumbify col-md-12">
         <form id="form-image-to-thumbify" name="form-image-to-thumbify" enctype="multipart/form-data">
@@ -29,40 +39,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="radio-area">
-                    <div>
-                        <label for="">Eu quero redimensionar a minha imagem para:</label>
-                    </div>
-                    <div class="form-check form-check-inline" data-toggle="tooltip" data-placement="top"
-                        title="Max width: 150px">
-                        <input class="form-check-input" type="radio" name="radioSize" id="inlineRadio1" value="150">
-                        <label class="form-check-label" for="inlineRadio1">Muito pequena</label>
-                    </div>
-                    <div class="form-check form-check-inline" data-toggle="tooltip" data-placement="top"
-                        title="Max width: 300px">
-                        <input class="form-check-input" type="radio" name="radioSize" id="inlineRadio2" value="300">
-                        <label class="form-check-label" for="inlineRadio2">Pequena</label>
-                    </div>
-                    <div class="form-check form-check-inline" data-toggle="tooltip" data-placement="top"
-                        title="Max width: 600px">
-                        <input class="form-check-input" type="radio" name="radioSize" id="inlineRadio3" value="600"
-                            checked>
-                        <label class="form-check-label" for="inlineRadio3">Média</label>
-                    </div>
-                    <div class="form-check form-check-inline" data-toggle="tooltip" data-placement="top"
-                        title="Max width: 1200px">
-                        <input class="form-check-input" type="radio" name="radioSize" id="inlineRadio4" value="1200">
-                        <label class="form-check-label" for="inlineRadio4">Grande</label>
-                    </div>
-                    <div class="form-check form-check-inline" data-toggle="tooltip" data-placement="top"
-                        title="Max width: 1920px">
-                        <input class="form-check-input" type="radio" name="radioSize" id="inlineRadio5" value="1920">
-                        <label class="form-check-label" for="inlineRadio5">Muito grande</label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary col-md-4 offset-md-4" id="btn-submit" disabled>Processar imagem</button>
+                <button type="submit" class="btn btn-primary col-md-4 offset-md-4" id="btn-submit" disabled>Cortar imagem</button>
                 <span class="text-danger help-block"></span>
             </div>
         </form>
@@ -92,3 +69,28 @@
         </p>
     </article>
 </section>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-preview">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="modal-preview" tabindex="-1" aria-labelledby="modal-previewLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="modal-previewLabel">Pré-visualização</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="display: flex; justify-content: center; align-items: center; height: 400px; margin-top: 40px; margin-bottom: 40px;">
+            <img src="" id="img-preview" style="max-height: 400px;" />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>

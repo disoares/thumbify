@@ -4,11 +4,19 @@
 </footer>
 
 <script src="/res/javascript/bootstrap.bundle.min.js"></script>
-<script src="/res/javascript/thumbify.js"></script>
+
+{loop="$scripts"}
+<script src="/res/javascript/{$value}"></script>
+{/loop}
+
 <script>
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
+
+    $('#hamburger').on('click', () => {
+        $('.menu-services').toggle('slow');
+    });
 </script>
 </body>
 

@@ -6,17 +6,9 @@ require_once('src/config/Config.php');
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Slim\App as App;
-use Rain\Tpl;
 
 use App\model\Model;
-
-// config
-$config = array(
-    "tpl_dir"       => "views/",
-    "cache_dir"     => "views-cache/",
-    "true"         => false, // set to false to improve the speed
-);
-Tpl::configure($config);
+use App\model\LoadTpl;
 
 $app = new App([
     'settings' => [
@@ -26,16 +18,13 @@ $app = new App([
 
 $app->get('/', function (Request $request, Response $response, array $args) {
 
-    $tpl = new Tpl();
+    $loadTpl = new LoadTpl(array(
+        'title' => 'Redimensionar',
+        'description' => 'Redimensionar imagem grátis',
+        'keywords' => 'Thumbnail, Resize Image, Resize, Image, Cut, Crop, Crip Image',
+        'author' => 'Diego Soares',
+    ), 'thumbify', [], ['resize.js']);
 
-    $tpl->assign('title', 'Thumbify');
-    $tpl->assign('description', 'Free image resize');
-    $tpl->assign('keywords', 'Thumbnail, Resize Image, Resize, Image, Cut, Crop, Crip Image');
-    $tpl->assign('author', 'Diego Soares');
-
-    $tpl->draw('header');
-    $tpl->draw('thumbify');
-    $tpl->draw('footer');
 });
 
 $app->post('/upload', function (Request $request, Response $response, array $args) {
@@ -44,11 +33,23 @@ $app->post('/upload', function (Request $request, Response $response, array $arg
 });
 
 $app->post('/resize', function (Request $request, Response $response, array $args) {
-
-    $path = TEMP_PATH . $_FILES['image-to-thumbify']['name'];
-
+    
     $model = new Model();
-    echo $model->resizeImage($path, $_POST['radioSize']);
+
+    if(isset($_POST['radioSize'])){
+        echo $model->resizeImage(TEMP_PATH . $_FILES['image-to-thumbify']['name'], $_POST['radioSize']);
+    }else{
+        echo $model->cropImage(TEMP_PATH . $_FILES['image-to-thumbify']['name'], $_FILES['imageToCropped']);
+    }
+});
+
+$app->get('/crop', function (Request $request, Response $response, array $args) {
+    $loadTpl = new LoadTpl(array(
+        'title' => 'Cortar',
+        'description' => 'Cortar imagem grátis',
+        'keywords' => 'Thumbnail, Resize Image, Resize, Image, Cut, Crop, Crip Image',
+        'author' => 'Diego Soares',
+    ), 'crop', ['cropper.css'], ['cropper.js', 'crop.js']);
 });
 
 $app->get('/delete', function (Request $request, Response $response, array $args) {

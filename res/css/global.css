@@ -51,19 +51,47 @@
     align-items: center;
 }
 
-.nav-area a {
+.logo {
     position: absolute;
     top: 10px;
     color: #fff;
 }
 
-.nav-area a:hover {
+.logo:hover {
     color: #fff;
 }
 
 .nav-area h1 {
     font-size: 2rem;
     margin: 0 auto;
+}
+
+.menu-services{
+    display: none;
+    width: 200px;
+    background-color: var(--primary-color-light);
+    list-style: none;
+    position: absolute;    
+    right: 0;
+    top: 52px;
+    z-index: 9999;
+}
+
+.menu-services li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    transition: all .5s;
+}
+
+.menu-services li a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu-services li:hover{
+    background-color: var(--primary-color);
 }
 
 .btn-add-image {
