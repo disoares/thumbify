@@ -129,6 +129,12 @@
     color: var(--primary-color-light);
 }
 
+.text-primary{
+    width: 4rem;
+    height: 4rem;
+    color: var(--primary-color) !important;
+}
+
 .img-to-thumbify {
     max-width: 100%;
     display: none;

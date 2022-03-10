@@ -45,6 +45,7 @@ $(document).ready(function () {
             data: form_data,
             beforeSend: () => {
                 $('.help-block').html('');
+                document.getElementById('area-drag-and-drop').innerHTML = loading();
             },
             success: (response) => {
                 if (response.status === 'success') {
@@ -122,5 +123,13 @@ $(document).ready(function () {
 
         return false;
     });
+
+    const loading = () => {
+        return `
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        `;
+    }
 
 });
