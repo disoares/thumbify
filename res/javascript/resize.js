@@ -37,6 +37,16 @@ $(document).ready(function () {
         const form_data = new FormData($("form[name='form-image-to-thumbify']")[0]);
 
         $.ajax({
+            xhr: function () {
+                let xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener("progress", function (evt) {
+                    if (evt.lengthComputable) {
+                        let percentComplete = (evt.loaded / evt.total) * 100;
+                        document.getElementsByClassName('perc-loading')[0].innerText = Math.floor(percentComplete) + '%';
+                    }
+                }, false);
+                return xhr;
+            },
             url: "/upload",
             type: "post",
             dataType: "json",
@@ -48,7 +58,7 @@ $(document).ready(function () {
                 document.getElementById('area-drag-and-drop').innerHTML = loading();
             },
             success: (response) => {
-                if (response.status === 'success') {
+                if (response.status === 'success') {                    
 
                     let img = document.getElementById('img-to-thumbify');
                     img.title = response.name;
@@ -62,8 +72,8 @@ $(document).ready(function () {
                     $('.area-btn-download').html('');
 
                 } else {
-                    $('#btn-add-image').siblings('.help-block').css('display', 'block');
-                    $('#btn-add-image').siblings('.help-block').html(response.message);
+                    document.getElementsByClassName('help-block')[0].innerText = response.message;
+                    document.getElementById('area-drag-and-drop').innerHTML = defaultUploadArea();
                 }
             },
             error: (err) => {
@@ -105,6 +115,16 @@ $(document).ready(function () {
             <div class="spinner-border text-primary" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
+            <div class="perc-loading"></div>
+        `;
+    }
+
+    const defaultUploadArea = () => {
+        return `
+            <div>
+                <img src="/res/images/icons/download.svg" alt="ícone upload" />
+            </div>
+            Ou arraste uma imagem e solte aqui
         `;
     }
 

@@ -10,17 +10,17 @@ class Model
         $json = array();
         $json['status'] = 'success';
 
-        if ($file['size'] > 0 && $file['size'] < 3248256) {
+        if ($file['size'] > 0 && $file['size'] < 10485760) {
 
             if (!move_uploaded_file($file['tmp_name'], TEMP_PATH . $file['name'])) {
                 $json['status'] = 'error';
-                $json['message'] = 'Oops... There was an error.';
+                $json['message'] = 'Oops... Houve um erro na requisição.';
             } else {
                 $json['name'] = $file['name'];
             }
         } else {
             $json['status'] = 'error';
-            $json['message'] = 'Sorry... your image is very large.';
+            $json['message'] = 'Desculpe... sua imagem é muito grande.';
         }
 
         return json_encode($json);

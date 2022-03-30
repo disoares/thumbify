@@ -37,6 +37,16 @@ $(document).ready(function () {
         const form_data = new FormData($("form[name='form-image-to-thumbify']")[0]);
 
         $.ajax({
+            xhr: function () {
+                let xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener("progress", function (evt) {
+                    if (evt.lengthComputable) {
+                        let percentComplete = (evt.loaded / evt.total) * 100;
+                        document.getElementsByClassName('perc-loading')[0].innerText = Math.floor(percentComplete) + '%';
+                    }
+                }, false);
+                return xhr;
+            },
             url: "/upload",
             type: "post",
             dataType: "json",
@@ -64,8 +74,8 @@ $(document).ready(function () {
                     makeCroppable();
 
                 } else {
-                    $('#btn-add-image').siblings('.help-block').css('display', 'block');
-                    $('#btn-add-image').siblings('.help-block').html(response.message);
+                    document.getElementsByClassName('help-block')[0].innerText = response.message;
+                    document.getElementById('area-drag-and-drop').innerHTML = defaultUploadArea();
                 }
             },
             error: (err) => {
@@ -87,7 +97,7 @@ $(document).ready(function () {
             maxHeight: 4096,
             fillColor: '#fff',
             imageSmoothingEnabled: false,
-            imageSmoothingQuality: 'high',            
+            imageSmoothingQuality: 'high',
         }).toBlob((blob) => {
 
             const formData = new FormData($("form[name='form-image-to-thumbify']")[0]);
@@ -107,7 +117,7 @@ $(document).ready(function () {
                 success: (response) => {
                     if (response.status === 'success') {
 
-                        $('.area-btn-download').html(`<a href="/src/images/temp/${response.filename}" class="btn btn-success" download>Download</a>`);                        
+                        $('.area-btn-download').html(`<a href="/src/images/temp/${response.filename}" class="btn btn-success" download>Download</a>`);
                         $('#img-preview').attr('src', `/src/images/temp/${response.filename}`);
 
                         $('#modal-preview').modal('show');
@@ -129,6 +139,16 @@ $(document).ready(function () {
             <div class="spinner-border text-primary" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
+            <div class="perc-loading"></div>
+        `;
+    }
+
+    const defaultUploadArea = () => {
+        return `
+            <div>
+                <img src="/res/images/icons/download.svg" alt="ícone upload" />
+            </div>
+            Ou arraste uma imagem e solte aqui
         `;
     }
 

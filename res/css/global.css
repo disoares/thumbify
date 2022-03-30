@@ -100,10 +100,6 @@
     align-items: center;
 }
 
-.help-block {
-    display: none;
-}
-
 .section-image-to-thumbify {
     min-height: calc(100vh - 60px);
     margin-top: 3rem;
@@ -127,6 +123,11 @@
 
 .area-drag-and-drop span {
     color: var(--primary-color-light);
+}
+
+.perc-loading{
+    color: var(--primary-color);
+    margin-top: 5px;
 }
 
 .text-primary{
