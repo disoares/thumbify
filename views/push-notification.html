@@ -1,47 +1,43 @@
 <style>
-    .cropper-crop {
-        display: none;
+    textarea {
+        resize: none;
     }
 
-    .cropper-bg {
-        background: none;
+    #btn-send-push-notification {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
     }
 </style>
 
 <section class="container col-md-6 offset-md-3 section-image-to-thumbify">
-    <div class="area-form-image-to-thumbify col-md-12">
-        <form id="form-image-to-thumbify" name="form-image-to-thumbify" enctype="multipart/form-data">
+    <div class="col-md-12">
+        <form id="form-push-notification" name="form-push-notification">
             <div class="form-group">
-                <label for="image-to-thumbify">Selecione uma imagem</label>
-                <div>
-                    <button type="button" class="btn btn-primary col-md-12 btn-add-image"
-                        onclick="$('#image-to-thumbify').trigger( 'click' )">
-                        <img src="/res/images/icons/upload.svg" alt="ícone upload" />&nbsp;
-                        Escolha uma imagem
-                    </button>
-                    <span class="text-danger help-block"></span>
-                </div>
-                <input type="file" class="form-control-file" name="image-to-thumbify" id="image-to-thumbify" hidden>
-                <div class="mt-4 area-image-to-thumbify">
-                    <div class="uploaded-image">
-                        <img alt="image to resize" class="img-to-thumbify" id="img-to-thumbify">
-                    </div>
-                    <div class="area-drag-and-drop" id="area-drag-and-drop">
-                        <div>
-                            <img src="/res/images/icons/download.svg" alt="ícone upload" />
-                        </div>
-                        Ou arraste uma imagem e solte aqui
-                    </div>
-                </div>
+                <label for="server-key">Server Key*</label>
+                <input type="text" class="form-control" id="server-key" name="server-key" placeholder="Server Key"
+                    required>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary col-md-4 offset-md-4" id="btn-submit" disabled>Cortar
-                    imagem</button>
-                <span class="text-danger help-block"></span>
+                <label for="device-token">Device Token*</label>
+                <input type="text" class="form-control" id="device-token" name="device-token" placeholder="Device Token"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="title">Título*</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Título" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Mensagem*</label>
+                <textarea rows="5" class="form-control" id="message" name="message" placeholder="Mensagem"
+                    required></textarea>
+            </div>
+            <div class="form-group" style="display: flex; align-items: center; justify-content: center;">
+                <button type="submit" class="btn btn-primary" id="btn-send-push-notification">Enviar
+                    notificação</button>
             </div>
         </form>
-        <div class="area-btn-download">
-        </div>
     </div>
 </section>
 
@@ -113,3 +109,5 @@
         </div>
     </div>
 </div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
